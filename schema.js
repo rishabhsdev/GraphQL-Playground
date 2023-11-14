@@ -11,17 +11,21 @@ type Book {
     title: String!
     description: String!
     author: Author
+    issuedBy: Student
+    reviews: [Review!]
 }
 
 type Student {
     studentId: String
     name: String
+    books: [Book!]
+    reviews: [Review!]
 }
 
 type Review {
     createdBy: Student
     createdOn: Book
-    review: String!
+    review: String
 }
 
 type signedUpUser {
@@ -37,6 +41,8 @@ type Query {
     getSingleStudent(studentId: ID!): Student
     getAuthors: [Author]
     getSingleAuthor(authorId: ID!): Author
+    getReviews: [Review]
+    getSingleReview(id: ID!): Review
 }
 
 type Mutation {
